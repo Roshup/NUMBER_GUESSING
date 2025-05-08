@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scientific Calculator</title>
+  <style>
+    .button1{
+        width:55px;
+        height:30px;
+        border:none;
+        background-color: aliceblue;
+    }
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    input[type="text"] { width: 300px; height: 40px; font-size: 18px; margin-bottom: 10px; }
+    button { width: 70px; height: 40px; margin: 5px; font-size: 16px; }
+  </style>
+  
+</head>
+<body>
+
+<h2>Scientific Calculator</h2>
+<input type="text" id="display" readonly />
+<div>
+    <button class="button1" onclick="append('MC')">MC</button>
+    <button class="button1" onclick="append('MR')">MR</button>
+    <button class="button1" onclick="append('M+')">M+</button>
+    <button class="button1" onclick="append('M-')">M-</button>
+    <button class="button1" onclick="append('MS')">MS</button>
+    <button class="button1" onclick="append('M')">M</button>
+</div>
+<div>
+  <button onclick="append('1')">1</button>
+  <button onclick="append('2')">2</button>
+  <button onclick="append('3')">3</button>
+  <button onclick="append('+')">+</button>
+</div>
+<div>
+  <button onclick="append('4')">4</button>
+  <button onclick="append('5')">5</button>
+  <button onclick="append('6')">6</button>
+  <button onclick="append('-')">-</button>
+</div>
+<div>
+  <button onclick="append('7')">7</button>
+  <button onclick="append('8')">8</button>
+  <button onclick="append('9')">9</button>
+  <button onclick="append('*')">*</button>
+</div>
+<div>
+  <button onclick="append('0')">0</button>
+  <button onclick="append('.')">.</button>
+  <button onclick="calculate()">=</button>
+  <button onclick="append('/')">/</button>
+</div>
+<div>
+  <button onclick="append('Math.sin(')">sin</button>
+  <button onclick="append('Math.cos(')">cos</button>
+  <button onclick="append('Math.tan(')">tan</button>
+  <button onclick="append('Math.log(')">log</button>
+</div>
+<div>
+  <button onclick="append('Math.exp(')">exp</button>
+  <button onclick="append('Math.sqrt(')">√</button>
+  <button onclick="append('Math.pow(')">pow</button>
+  <button onclick="clearDisplay()">C</button>
+</div>
+
+<script>
+  const display = document.getElementById("display");
+
+  function append(value) {
+    display.value += value;
+  }
+
+  function clearDisplay() {
+    display.value = "";
+  }
+
+  function calculate() {
+    try {
+      display.value = eval(display.value);
+    } catch {
+      display.value = "Error";
+    }
+  }
+</script>
+
+</body>
+</html>

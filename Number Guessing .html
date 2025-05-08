@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess the Number</title>
+</head>
+<body>
+
+  <h1>🎯 Guess the Number (1 - 100)</h1>
+  <input type="number" id="guessInput" placeholder="Enter your guess" />
+  <button onclick="checkGuess()">Guess</button>
+  <p id="result"></p>
+  <p id="attempts">Attempts: 0</p>
+
+  <script>
+    const number = Math.floor(Math.random() * 100) + 1;
+    let attem = 0;
+
+    function checkGuess() {
+      const guess = Number(document.getElementById('guessInput').value);
+      const result = document.getElementById('result');
+      const attemptsDisplay = document.getElementById('attempts');
+      attem++;
+
+      if (!guess || guess < 1 || guess > 100) {
+        result.textContent = '⛔ Please enter a number between 1 and 100.';
+        return;
+      }
+
+      if (guess === number) {
+        result.textContent = `🎉 You guessed it! The number was ${number}.`;
+      } else if (guess < number) {
+        result.textContent = '🔻 Too low!';
+      } else {
+        result.textContent = '🔺 Too high!';
+      }
+
+      attemptsDisplay.textContent = `Attempts: ${attem}`;
+    }
+  </script>
+
+</body>
+</html>
